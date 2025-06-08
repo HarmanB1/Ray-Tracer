@@ -98,6 +98,10 @@ struct Vec{
 
 };
 
+/**
+ * @struct holds ray direction and origin and cna return point along ray
+ * 
+ */
 struct Ray{
     Vec origin; //< ray origin 
     Vec direction; //< ray direction
@@ -116,6 +120,10 @@ struct Ray{
 
 /* Random numb gen(monte carlo)*/
 
+/**
+ * @class Random gives random point in sphere
+ * 
+ */
 class Random{
     private:
         /*member variables*/
