@@ -96,12 +96,19 @@ struct Vec{
         return (*this / length());
     }
 
+};
 
+struct Ray{
+    Vec origin; //< ray origin 
+    Vec direction; //< ray direction
 
-
-
-
-
-
-
+    /**
+     * @brief uses R(t) = O + tD to calculate point along ray
+     * 
+     * @param t float that is a point along ray
+     * @return Vec struct instance of point t
+     */
+    Vec rayFormula(float t) const{
+        return origin + (direction*t);
+    }
 };
