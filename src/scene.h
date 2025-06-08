@@ -28,3 +28,12 @@ struct Hit{
         normal = frontFace ? outNorm: (-1) * outNorm; /// if they are in diff directions, then outNorm is good, otherwise flip outNorm
      }
 };
+
+/**
+ * @class for hittable geometry
+ * 
+ */
+
+ Class Hittable{
+
+ };
