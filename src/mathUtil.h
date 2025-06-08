@@ -112,3 +112,16 @@ struct Ray{
         return origin + (direction*t);
     }
 };
+
+
+/* Random numb gen(monte carlo)*/
+
+class Random{
+    private:
+        /*member variables*/
+        std::mt19937 gen; //< random number generator
+        std::uniform_real_distribution<float> distribution;
+
+    public:
+        Random(): gen(std::random_device{}()), distribution(0.0f, 1.0f){}
+};
