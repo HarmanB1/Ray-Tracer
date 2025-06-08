@@ -29,7 +29,7 @@ struct Vec{
      * @brief Operator overloading of adding vectors
      * 
      * @param v is a instance of Vector struct
-     * @return Vec struct 
+     * @return Vec struct instance 
      */
     Vec operator-(const Vec& v) const{
         return {x-v.x, y-v.y, z-v.z};
@@ -39,23 +39,68 @@ struct Vec{
     /**
      * @brief Operator overloading of sclar multiplication
      * 
-     * @param v is a instance of Vector struct
-     * @return Vec struct 
+     * @param s is a float that is being multiplied to vector
+     * @return Vec struct instance containing multiplied vector
      */
-    Vec operator*(const Vec& v) const{
-        return {x*v.x, y*v.y, z/v.z};
+    Vec operator*(float s) const{
+        return {x*s, y*s, z*s};
     }
 
     /*vector operations*/
     /**
      * @brief Operator overloading of sclar division
      * 
-     * @param v is a instance of Vector struct
-     * @return Vec struct 
+     * @param s is a float that is being multiplied to vector
+     * @return Vec struct instance containg divided vector
      */
-    Vec operator/(const Vec& v) const{
-        return {x/v.x, y/v.y, z/v.z};
+    Vec operator/(float s) const{
+        return {x/s, y/s, z/s};
     }
+
+    /*other vec functions*/
+    /**
+     * @brief dot product of 2 vectors
+     * 
+     * @param v is a instance of Vector struct
+     * @return float containing dot product
+     */
+    float dot(const Vec& v) const{
+        return (x*v.x + y*v.y + z*v.z);
+    }
+
+
+    /**
+     * @brief cross product of 2 vectors
+     * 
+     * @param v is a instance of Vector struct
+     * @return Vec struct containg new cross producted vector
+     */
+    Vec cross(const Vec& v) const{
+        return {y*v.z - z*v.y, z*v.x - x*v.z, x*v.y - y*v.x};
+    }
+
+   
+    /**
+     * @brief returns length of vector using pyathgerous theorem
+     * 
+     * @return float which is the length of vector
+     */
+    float length() const {return std::sqrt(x*x + y*y + z*z);}
+
+    /**
+     * @brief returns length of vector using pyathgerous theorem
+     * 
+     * @return returns Vec struct instance containing normalized vector
+     */
+    Vec normalized() const{
+        return (*this / length());
+    }
+
+
+
+
+
+
 
 
 
