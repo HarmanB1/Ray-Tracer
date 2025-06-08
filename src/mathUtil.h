@@ -13,13 +13,50 @@ constexpr float EPS = 0.0001f; //< very small value to make sure ray doesnt get 
 struct Vec{
     float x, y ,z;
 
-    //different vec ops
+    /*vector operations*/
+    /**
+     * @brief Operator overloading of adding vectors
+     * 
+     * @param v is a instance of Vector struct
+     * @return Vec struct 
+     */
     Vec operator+(const Vec& v) const{
         return {x+v.x, y+v.y, z};
     }
+
+    /*vector operations*/
+    /**
+     * @brief Operator overloading of adding vectors
+     * 
+     * @param v is a instance of Vector struct
+     * @return Vec struct 
+     */
     Vec operator-(const Vec& v) const{
-        return
+        return {x-v.x, y-v.y, z-v.z};
     }
+
+    /*vector operations*/
+    /**
+     * @brief Operator overloading of sclar multiplication
+     * 
+     * @param v is a instance of Vector struct
+     * @return Vec struct 
+     */
+    Vec operator*(const Vec& v) const{
+        return {x*v.x, y*v.y, z/v.z};
+    }
+
+    /*vector operations*/
+    /**
+     * @brief Operator overloading of sclar division
+     * 
+     * @param v is a instance of Vector struct
+     * @return Vec struct 
+     */
+    Vec operator/(const Vec& v) const{
+        return {x/v.x, y/v.y, z/v.z};
+    }
+
 
 
 };
