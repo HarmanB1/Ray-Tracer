@@ -123,5 +123,33 @@ class Random{
         std::uniform_real_distribution<float> distribution;
 
     public:
-        Random(): gen(std::random_device{}()), distribution(0.0f, 1.0f){}
+    /**
+     * @brief Construct a new Random object, and initialzies generator with random seed
+     * sets distruciton from 0 to 1
+     * 
+     * 
+     */
+     Random(): gen(std::random_device{}()), distribution(0.0f, 1.0f){}
+
+     float next(){
+        return distribution(gen);
+     }
+
+     /**
+      * @brief returns vector inside unit circle 
+      * by generating and continoulsy checking to see if in circle
+      * 
+      * @return Vec struct instance 
+      */
+     Vec randSphereVec(){
+        Vec v; 
+        do{
+            v = {next()*2 -1,next()*2 -1,next()*2 -1, }; ///generates in range of 0 to 1
+
+        }while(v.dot(v)>= 1.0f);///used instead of lengthvec>1 as 
+        ///this is equiavlaent to inequailty dotvec>1
+     }
+     
+
+
 };
