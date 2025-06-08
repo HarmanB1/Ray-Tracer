@@ -150,6 +150,21 @@ class Random{
         ///this is equiavlaent to inequailty dotvec>1
      }
      
-
-
 };
+
+/*Other normal math funcs*/
+inline Vec operator*(float s, const Vec& v) { return v * s; }//<commutative multiplcaiton
+
+/**
+ * @brief clamps x down if it is passes either min or max
+ * 
+ * @param x is float being clamped
+ * @param min 
+ * @param max 
+ * @return float which is either min, max or x
+ */
+inline float clamp(float x, float min, float max) {
+    return x < min ? min : (x > max ? max : x);
+}
+
+
