@@ -168,3 +168,36 @@ inline float clamp(float x, float min, float max) {
 }
 
 
+/**
+ * @brief Reflects a vector off a surface with a given normal.
+ * 
+ * This function calculates the reflection of vector `v` across a surface with normal `n`.
+ * The reflection is computed using the formula: R = v - 2(v · n)n
+ * 
+ * @param v The incident vector that is to be reflected.
+ * @param n The normal vector of the surface.
+ * 
+ * @return The reflected vector.
+ */
+inline Vec reflect(const Vec& v, const Vec& n) {
+    return v - 2 * v.dot(n) * n;
+}
+
+/**
+ * @brief Refracts a vector into a new medium with a given refractive index ratio.
+ * 
+ * This function calculates the refraction of vector `v` as it passes through a boundary between two materials.
+ * It uses Snell's law to calculate the direction of the refracted vector based on the refractive index ratio `etai_over_etat`.
+ * 
+ * @param v The incident vector (direction of the incoming ray).
+ * @param n The normal vector of the surface at the point of intersection.
+ * @param etai_over_etat The ratio of the refractive indices of the two media (e.g., air to glass, water to air).
+ * 
+ * @return The refracted vector, representing the new direction of the ray inside the new medium.
+ */
+inline Vec refract(const Vec& v, const Vec& n, float etai_over_etat) {
+    float cos_theta = fmin(((-1)*v).dot(n), 1.0f);
+    Vec r_out_perp = etai_over_etat * (v + cos_theta * n);
+    Vec r_out_parallel = -sqrt(fabs(1.0f - r_out_perp.length() * r_out_perp.length())) * n;
+    return r_out_perp + r_out_parallel;
+}
